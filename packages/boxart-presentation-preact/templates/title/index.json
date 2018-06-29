@@ -13,12 +13,14 @@
     "rotateY": 0,
     "rotateZ": 0,
     "scaleX": 1,
-    "perspective": 0,
-    "scaleY": 1
+    "perspective": 100,
+    "scaleY": 1,
+    "blur": 0,
+    "opacity": 1
   },
   "children": [
     {
-      "name": "",
+      "name": "root3",
       "type": "Box3d",
       "x": 0.5,
       "y": 0.5,
@@ -32,18 +34,30 @@
         "rotateY": 0,
         "rotateZ": 0,
         "scaleX": 1,
-        "perspective": 0,
+        "perspective": 1000,
         "scaleY": 1
       },
       "children": [
         {
-          "name": "",
-          "type": null,
+          "name": "root4",
+          "type": "Box3d",
           "x": 0.5,
           "y": 0.5,
           "width": 1,
           "height": 1,
-          "values": null,
+          "values": {
+            "perspective": 0,
+            "translateX": 0,
+            "translateY": 0,
+            "translateZ": 0,
+            "rotateX": 0,
+            "rotateY": 0,
+            "rotateZ": 0,
+            "scaleX": 1,
+            "scaleY": 1,
+            "blur": 0,
+            "opacity": 1
+          },
           "children": [
             {
               "name": "title3d",
@@ -54,7 +68,7 @@
               "height": 0.3,
               "values": {
                 "fontFamily": "",
-                "fontSize": "3rem",
+                "fontSize": "2rem",
                 "rotateY": 0,
                 "rotateZ": 0,
                 "rotateX": 0,
@@ -75,7 +89,7 @@
                   "height": 1,
                   "values": {
                     "fontFamily": "",
-                    "fontSize": "3rem"
+                    "fontSize": "2rem"
                   },
                   "children": [
 

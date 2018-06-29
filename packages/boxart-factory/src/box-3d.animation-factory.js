@@ -16,6 +16,8 @@ class Box3d {
       rotateZ: update.constant(0),
       scaleX: update.constant(1),
       scaleY: update.constant(1),
+      blur: update.constant(0),
+      opacity: update.constant(1),
     });
   }
 
@@ -26,7 +28,8 @@ class Box3d {
       const firstFrame = (keyframes.length > 0) ? keyframes[0] : {time: 0, value: property.default || 0};
       const lastFrame = (keyframes.length > 0) ? keyframes[keyframes.length - 1] : {time: 0, value: property.default || 0};
       object[property.name] = [
-        animate.seconds((firstFrame.time + 1) / 30)
+        animate.seconds((firstFrame.time) / 30)
+          // .frame(animate.begin()),
           .frame(animate.value(() => firstFrame.value)),
         ...keyframes.slice(0, keyframes.length - 1).map((frame, index) => (
           animate.seconds((keyframes[index + 1].time - frame.time) / 30)
@@ -42,7 +45,7 @@ class Box3d {
   }
 
   static present(box) {
-    return present.style({
+    const obj = {
       transform: present.concat([
         present.translate([present.key('x').percent(), present.key('y').percent()]),
         present.scale([present.key('width').div(present.constant(100)), present.key('height').div(present.constant(100))]),
@@ -58,7 +61,14 @@ class Box3d {
         present.scale([present.key('scaleX'), present.key('scaleY')]),
       ]),
       visibility: present.constant('initial'),
-    });
+    };
+    if (box.properties.find(({name}) => name === 'blur')) {
+      obj.blur = present.func('blur', ', ', [present.key('blur').px()]);
+    }
+    if (box.properties.find(({name}) => name === 'opacity')) {
+      obj.opacity = present.key('opacity');
+    }
+    return present.style(obj);
   }
 }
 

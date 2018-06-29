@@ -2,9 +2,9 @@ import {h} from 'preact';
 
 import {Render} from 'boxart-factory-preact';
 
-export default <div class="slide 02-01 slide-in-left">
+export default <div class="slide rotate-br rotate-br-01">
   <Render
     rect={require('../templates/title')}
-    insert={{title: 'title2'}}
+    insert={{title: 'and not Z'}}
     />
 </div>;

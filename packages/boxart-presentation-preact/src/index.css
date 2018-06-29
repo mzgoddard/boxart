@@ -1,5 +1,10 @@
 .slide {
   height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 
 .previous, .leave, .next {
@@ -7,9 +12,9 @@
 }
 
 .previous {
-  height: auto;
+/*  height: auto;*/
 }
 
-.slide-title.previous {
-  height: 100%;
+.slide-title.previous, .slide-4.previous {
+/*  height: 100%;*/
 }

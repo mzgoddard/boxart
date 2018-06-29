@@ -14,6 +14,7 @@ export const animation = _animation => {
   const presentElements = {};
 
   for (const box of _animation.boxes) {
+    console.log(box, box.type, factories[box.type]);
     updateElements[box.name || 'root'] = ((factories[box.type] || factories.Box).update || factories.Box.update)(box);
     animateElements[box.name || 'root'] = ((factories[box.type] || factories.Box).animate || factories.Box.animate)(box, _animation.duration);
     presentElements[box.name || 'root'] = ((factories[box.type] || factories.Box).present || factories.Box.present)(box);

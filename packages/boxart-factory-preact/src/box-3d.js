@@ -17,6 +17,7 @@ class Box3d extends Component {
           right: `${(1 - rect.x) * 100 - rect.width / 2 * 100}%`,
           bottom: `${(1 - rect.y) * 100 - rect.height / 2 * 100}%`,
           left: `${rect.x * 100 - rect.width / 2 * 100}%`,
+          transformStyle: 'preserve-3d',
           transform:
             `perspective(${values.perspective || 0}px) ` +
             `translate3d(${values.translateX || 0}%, ${values.translateY || 0}%, ${values.translateZ || 0}px) ` +
@@ -24,6 +25,8 @@ class Box3d extends Component {
             `rotateY(${values.rotateY || 0}deg) ` +
             `rotateZ(${values.rotateZ || 0}deg) ` +
             `scale(${typeof values.scaleX === 'undefined' ? values.scaleX : 1}, ${typeof values.scaleY === 'undefined' ? values.scaleY : 1})`,
+          filter: values.blur ? `blur(${values.blur}px)` : '',
+          opacity: values.opacity,
         }, props.dom && props.dom.style)}>
         {children}
       </div>
@@ -65,6 +68,14 @@ Box3d.rectTypes = {
     filter(source) {return Number(source);},
   },
   scaleY: {
+    edit(source) {return typeof source === 'undefined' ? 1 : source;},
+    filter(source) {return Number(source);},
+  },
+  blur: {
+    edit(source) {return source || 0;},
+    filter(source) {return Number(source);},
+  },
+  opacity: {
     edit(source) {return typeof source === 'undefined' ? 1 : source;},
     filter(source) {return Number(source);},
   },

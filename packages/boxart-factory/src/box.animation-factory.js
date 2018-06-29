@@ -18,6 +18,7 @@ class Box {
       const lastFrame = (keyframes.length > 0) ? keyframes[keyframes.length - 1] : {time: 0, value: property.default || 0};
       object[property.name] = [
         animate.seconds((firstFrame.time + 1) / 30)
+          // .frame(animate.begin()),
           .frame(animate.value(() => firstFrame.value)),
         ...keyframes.slice(0, keyframes.length - 1).map((frame, index) => (
           animate.seconds((keyframes[index + 1].time - frame.time) / 30)
